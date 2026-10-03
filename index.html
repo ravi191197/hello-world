@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6556e8" />
+    <title>Focus List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-card" aria-labelledby="page-title">
+        <header class="card-header">
+          <div>
+            <p class="eyebrow" id="today-label">TODAY</p>
+            <h1 id="page-title">Focus list</h1>
+          </div>
+          <div class="progress-ring" aria-label="Task completion progress">
+            <svg viewBox="0 0 42 42" aria-hidden="true">
+              <circle class="ring-track" cx="21" cy="21" r="16" />
+              <circle class="ring-value" cx="21" cy="21" r="16" />
+            </svg>
+            <span id="progress-text">0%</span>
+          </div>
+        </header>
+
+        <form class="add-task" id="task-form">
+          <label class="sr-only" for="new-task">What needs your attention?</label>
+          <input id="new-task" type="text" placeholder="What needs your attention?" maxlength="120" autocomplete="off" required />
+          <button type="submit" aria-label="Add task"><span>+</span> Add task</button>
+        </form>
+
+        <div class="task-toolbar">
+          <p id="task-summary" aria-live="polite">No tasks yet — add your first one.</p>
+          <button class="clear-completed" id="clear-completed" type="button" hidden>Clear completed</button>
+        </div>
+
+        <ul class="task-list" id="task-list" aria-label="To-do items"></ul>
+
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">✓</div>
+          <p>Your list is clear.</p>
+          <span>Add a task above to get started.</span>
+        </div>
+      </section>
+    </main>
+    <template id="task-template">
+      <li class="task-item">
+        <label class="task-check">
+          <input type="checkbox" />
+          <span class="custom-checkbox" aria-hidden="true"></span>
+          <span class="task-title"></span>
+        </label>
+        <button class="delete-task" type="button" aria-label="Delete task">×</button>
+      </li>
+    </template>
+    <script src="script.js"></script>
+  </body>
+</html>
